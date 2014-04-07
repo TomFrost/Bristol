@@ -1,0 +1,29 @@
+{
+  "name": "bristol",
+  "version": "0.1.0",
+  "description": "Data type-aware, multi-format, multi-destination logging",
+  "main": "lib/Bristol.js",
+  "scripts": {
+    "test": "echo Node `node -v`; echo NPM `npm -v`; echo Mocha `mocha --version`; mocha --recursive -R spec test"
+  },
+  "homepage": "https://github.com/TomFrost/Bristol",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TomFrost/Bristol.git"
+  },
+  "keywords": [
+    "log",
+    "datatype",
+    "commoninfomodel",
+    "json"
+  ],
+  "author": "Tom Frost <tom@frosteddesign.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "should": "~3.2.0",
+    "mocha": "~1.18.2"
+  },
+  "dependencies": {
+    "moment": "~2.5.1"
+  }
+}
