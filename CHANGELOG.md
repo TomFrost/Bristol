@@ -9,6 +9,7 @@ Insanely configurable logging for Node.js
 - Added: Human formatter
 - Added: CommonInfoModel formatter
 - Added: Syslog formatter
+- Added: File target
 
 ### v0.1.0
 - **Initial Release**
