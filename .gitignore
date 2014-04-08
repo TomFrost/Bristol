@@ -1,4 +1,5 @@
 .idea
 *.iml
 
+coverage.html
 node_modules
