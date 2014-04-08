@@ -21,7 +21,8 @@
   "license": "MIT",
   "devDependencies": {
     "should": "~3.2.0",
-    "mocha": "~1.18.2"
+    "mocha": "~1.18.2",
+    "tmp": "0.0.23"
   },
   "dependencies": {
     "moment": "~2.5.1"
