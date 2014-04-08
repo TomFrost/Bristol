@@ -1,7 +1,7 @@
 {
   "name": "bristol",
-  "version": "0.1.0",
-  "description": "Data type-aware, multi-format, multi-destination logging",
+  "version": "0.2.0",
+  "description": "Insanely configurable logging for Node.js",
   "main": "lib/Bristol.js",
   "scripts": {
     "test": "echo Node `node -v`; echo NPM `npm -v`; echo Mocha `mocha --version`; mocha --recursive -R spec test"
