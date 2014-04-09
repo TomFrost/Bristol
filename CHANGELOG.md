@@ -3,6 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### Development HEAD
+- Fix: Minor inaccuracies in README examples
+
 ### v0.2.0
 - Added: Human formatter
 - Added: CommonInfoModel formatter

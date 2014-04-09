@@ -129,7 +129,7 @@ log.info("New connection", incomingConn, {connections: server.getUserCount()});
 Do you need certain pieces of information logged with every message?
 
 ```js
-log.addGlobal('hostname', require('os').hostname);
+log.addGlobal('hostname', require('os').hostname());
 log.addGlobal('msg_uuid', function() {
     return uuid.v4();
 });
