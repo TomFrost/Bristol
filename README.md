@@ -6,17 +6,17 @@ Sponsored by [Leadnomics](http://www.leadnomics.com).
 ## Why another logger?
 NPM has no shortage of loggers.  Bristol was created to address a few common
 shortcomings in the current pool of options:
-	- The message format should be decoupled from the message target (file,
-	  console, etc). You never know what system will be ingesting log files.
-	- Structured logging should be the norm, _and simple log functions should
-	  make that easy!_ No more shortcuts to `util.format`; if you're injecting
-	  values into a string, chances are they should be logged under their own
-	  keys.
-	- No restrictions on data type.  If you log an Error object, your logger
-	  should know what to do with that.  Same goes for a string, an object, a
-	  date, as well as application-specific data types.
-	- Lightweight! Why load modules that your configuration never uses? Bristol
-	  lazy-loads everything it can.
+- The message format should be decoupled from the message target (file,
+console, etc). You never know what system will be ingesting log files.
+- Structured logging should be the norm, _and simple log functions should
+make that easy!_ No more shortcuts to `util.format`; if you're injecting
+values into a string, chances are they should be logged under their own
+keys.
+- No restrictions on data type.  If you log an Error object, your logger
+should know what to do with that.  Same goes for a string, an object, a
+date, as well as application-specific data types.
+- Lightweight! Why load modules that your configuration never uses? Bristol
+lazy-loads everything it can.
 
 Those points and more drove the development of a brand new breed of logging
 library.  Introducing Bristol.
@@ -69,12 +69,12 @@ Outputs:
 ```
 
 #### Available formatters
-	- **human:** Multi-line messages suitable for humans during development
-	- **json:** One line per message, valid json
-	- **syslog:** Syslog-compliant format, single-line
-	- **commonInfoModel:** Common Info Model format, friendly to many log
-		aggregators. More human-readable than JSON with similar benefits. One
-		line per message.
+- **human:** Multi-line messages suitable for humans during development
+- **json:** One line per message, valid json
+- **syslog:** Syslog-compliant format, single-line
+- **commonInfoModel:** Common Info Model format, friendly to many log
+	aggregators. More human-readable than JSON with similar benefits. One
+	line per message.
 
 ### Severity levels
 By default, Bristol provides *error*, *warn*, *info*, *debug*, and *trace*
@@ -135,8 +135,8 @@ log.addGlobal('msg_uuid', function() {
 log.info("This message contains both of those key/value pairs!");
 ```
 
-Functions provided to **addGlobal** will be executed for every log message.
-Note, however, that they're only called once per message even if multiple
+Functions provided to `addGlobal` will be executed for every log message.
+Note that they're only called once per message even if multiple
 targets have been added; therefore, the uuid in the example above will be
 consistent across *all* configured targets.
 
@@ -164,7 +164,7 @@ log.addTarget('console')
 ```
 
 ### Restricting targets to certain types of messages
-Sometimes, even with a severity level, it can be useful to filter out some
+Sometimes, even within a severity level, it can be useful to filter out some
 kinds of log messages.  Bristol leverages its key/value logging to allow you
 to blacklist or whitelist messages on a target, based on the values of certain
 keys.
@@ -192,7 +192,8 @@ log.addTarget('file')
 Restrictions on keys can be static types like strings or numbers, RegExp
 objects to check for a match, functions to test the value each time the
 target is hit, or arrays of any of the above to allow more than one match.
-Exclusions and inclusions can also be combined to summon Captain Planet.
+Exclusions and inclusions can also be combined in one target to summon
+Captain Planet.
 
 ### More than one logger
 Have a use case that requires more than one 'log' object, so you can maintain
@@ -208,7 +209,7 @@ independent instance with zero configuration.
 ### Extensions
 Instead of passing in a target or formatter as a string, you can pass your
 own functions!  Both of these modules are simply functions that take an
-options object as the first argument, and message-specific arguments after
+options object as the first argument, and context-specific arguments after
 that.  Check out some of the built-in targets and formatters for examples.
 They're super easy!
 
