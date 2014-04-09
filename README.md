@@ -1,6 +1,8 @@
 # Bristol
 Insanely configurable logging for Node.js
 
+[![Build Status](https://travis-ci.org/TomFrost/Bristol.svg?branch=master)](https://travis-ci.org/TomFrost/Bristol)
+
 Sponsored by [Leadnomics](http://www.leadnomics.com).
 
 ## Installation
