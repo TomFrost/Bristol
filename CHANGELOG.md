@@ -13,6 +13,7 @@ Insanely configurable logging for Node.js
 - Added: Syslog formatter
 - Added: File target
 - Added: Travis CI testing
+- Added: Incredible amounts of docs
 
 ### v0.1.0
 - **Initial Release**
