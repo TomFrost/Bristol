@@ -4,12 +4,21 @@
   "description": "Insanely configurable logging for Node.js",
   "main": "lib/Bristol.js",
   "scripts": {
-    "test": "echo Node `node -v`; echo NPM `npm -v`; echo Mocha `mocha --version`; mocha --recursive -R spec test"
+    "test": "echo Node `node -v`; echo NPM `npm -v`; echo Mocha `mocha --version`; grunt test"
   },
   "homepage": "https://github.com/TomFrost/Bristol",
   "repository": {
     "type": "git",
     "url": "git://github.com/TomFrost/Bristol.git"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "lib",
+      "data-cover-never": "[node_modules, /test]"
+    },
+    "travis-cov": {
+      "threshold": 80
+    }
   },
   "keywords": [
     "log",
@@ -22,7 +31,13 @@
   "devDependencies": {
     "should": "~3.2.0",
     "mocha": "~1.18.2",
-    "tmp": "0.0.23"
+    "tmp": "0.0.23",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "blanket": "~1.1.5",
+    "grunt-mocha-test": "~0.8.2",
+    "grunt-env": "~0.4.1",
+    "travis-cov": "~0.2.4"
   },
   "dependencies": {
     "moment": "~2.5.1"
