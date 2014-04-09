@@ -7,6 +7,7 @@ Insanely configurable logging for Node.js
 - Fix: Move dateformat to constant in CommonInfoModel and Syslog formatters
 - Fix: Remove comma separator from date elements in JSON formatter
 - Fix: Options documentation in JSON formatter
+- Fix: Target and formatter paths
 - Added: Human formatter
 - Added: CommonInfoModel formatter
 - Added: Syslog formatter
