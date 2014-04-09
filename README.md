@@ -17,6 +17,8 @@ should know what to do with that.  Same goes for a string, an object, a
 date, as well as application-specific data types.
 - Lightweight! Why load modules that your configuration never uses? Bristol
 lazy-loads everything it can.
+- No callbacks, return values, or anything that would disincentivize a
+developer from throwing in a quick log message.
 
 Those points and more drove the development of a brand new breed of logging
 library.  Introducing Bristol.
