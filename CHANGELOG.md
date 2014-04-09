@@ -11,6 +11,7 @@ Insanely configurable logging for Node.js
 - Added: CommonInfoModel formatter
 - Added: Syslog formatter
 - Added: File target
+- Added: Travis CI testing
 
 ### v0.1.0
 - **Initial Release**
