@@ -3,6 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### DEVELOPMENT HEAD
+- Fix: Options were still improperly sent to targets
+
 ### v0.2.1
 - Fix: Minor inaccuracies in README examples
 - Fix: Options were improperly sent to target functions
