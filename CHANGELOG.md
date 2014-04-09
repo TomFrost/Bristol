@@ -3,7 +3,7 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
-### DEVELOPMENT HEAD
+### v0.2.2
 - Fix: Options were still improperly sent to targets
 
 ### v0.2.1
