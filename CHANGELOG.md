@@ -3,6 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### v0.2.2
+- Fix: Error objects not being properly sent to log targets
+
 ### v0.2.1
 - Fix: Minor inaccuracies in README examples
 - Fix: Options were improperly sent to target functions
