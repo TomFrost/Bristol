@@ -32,10 +32,10 @@ In your project folder, type:
 ### Quick start
 
 ```js
-	var log = require('bristol');
-	log.addTarget('console');
+var log = require('bristol');
+log.addTarget('console');
 
-	log.info("We're up and running!", {port: 3000});
+log.info("We're up and running!", {port: 3000});
 ```
 
 Outputs (pretty-printed for README only):

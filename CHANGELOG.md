@@ -3,8 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
-### Development HEAD
+### v0.2.1
 - Fix: Minor inaccuracies in README examples
+- Fix: Options were improperly sent to target functions
 
 ### v0.2.0
 - Added: Human formatter
