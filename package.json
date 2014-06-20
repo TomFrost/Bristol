@@ -37,7 +37,8 @@
     "blanket": "~1.1.5",
     "grunt-mocha-test": "~0.8.2",
     "grunt-env": "~0.4.1",
-    "travis-cov": "~0.2.4"
+    "travis-cov": "~0.2.4",
+    "loggly": "^1.0.4"
   },
   "dependencies": {
     "moment": "~2.5.1"
