@@ -87,7 +87,7 @@ production as this is not performant.  There are no options for this target.
 #### file
 Streams output to a file using a logrotate-friendly WriteStream.  Required
 options:
-	- **file** *string:* The full path to the file to be created or opened
+- **file** *string:* The full path to the file to be created or opened
 
 #### loggly
 Pushes new messages directly to the Loggly API.  Note that, to keep Bristol
@@ -96,13 +96,13 @@ run `npm install loggly --save` in your project root in order to use this
 target.
 
 Required options:
-	- **token** *string:* Your loggly token
-    - **subdomain** *string:* Your registered Loggly subdomain
-    - **username** *string:* Loggly username
-    - **password** *string:* Loggly password
+- **token** *string:* Your loggly token
+- **subdomain** *string:* Your registered Loggly subdomain
+- **username** *string:* Loggly username
+- **password** *string:* Loggly password
 
 Optional:
-    - **tags** *Array|string:* Global Loggly tags
+- **tags** *Array|string:* Global Loggly tags
 
 ### Severity levels
 By default, Bristol provides *error*, *warn*, *info*, *debug*, and *trace*
