@@ -3,8 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
-### Development HEAD
+### v0.3.0
 - Added: Loggly target
+- Added: Better documentation regarding targets
 
 ### v0.2.2
 - Fix: Error objects not being properly sent to log targets
