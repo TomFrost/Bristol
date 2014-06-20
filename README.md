@@ -155,15 +155,15 @@ log.info("New connection", incomingConn, {connections: server.getUserCount()});
 Do you need certain pieces of information logged with every message?
 
 ```js
-log.addGlobal('hostname', require('os').hostname());
-log.addGlobal('msg_uuid', function() {
+log.setGlobal('hostname', require('os').hostname());
+log.setGlobal('msg_uuid', function() {
     return uuid.v4();
 });
 
 log.info("This message contains both of those key/value pairs!");
 ```
 
-Functions provided to `addGlobal` will be executed for every log message.
+Functions provided to `setGlobal` will be executed for every log message.
 Note that they're only called once per message even if multiple
 targets have been added; therefore, the uuid in the example above will be
 consistent across *all* configured targets.
