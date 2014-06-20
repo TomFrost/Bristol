@@ -19,12 +19,15 @@ describe("File Target", function() {
 			done();
 		});
 	});
-	it("should write the supplied message to a file", function() {
+	it("should write the supplied message to a file", function(done) {
 		file({file: tmpFile}, 'debug', new Date(), 'foo');
-		fs.readFile(tmpFile, {encoding:'utf8'}, function(err, data) {
-			should.not.exist(err);
-			should.exist(data);
-			data.should.eql("foo\n");
-		});
+		setTimeout(function() {
+			fs.readFile(tmpFile, {encoding:'utf8'}, function(err, data) {
+				should.not.exist(err);
+				should.exist(data);
+				data.should.eql("foo\n");
+				done();
+			});
+		}, 500);
 	});
 });
