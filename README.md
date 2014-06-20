@@ -90,7 +90,12 @@ options:
 	- **file** *string:* The full path to the file to be created or opened
 
 #### loggly
-Pushes new messages directly to the Loggly API.  Required options:
+Pushes new messages directly to the Loggly API.  Note that, to keep Bristol
+light, the Loggly API library is not included as a core dependency.  You must
+run `npm install loggly --save` in your project root in order to use this
+target.
+
+Required options:
 	- **token** *string:* Your loggly token
     - **subdomain** *string:* Your registered Loggly subdomain
     - **username** *string:* Loggly username
