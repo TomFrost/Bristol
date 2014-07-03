@@ -6,6 +6,8 @@ Insanely configurable logging for Node.js
 ### Development HEAD
 - Fix: Human formatter now outputs pretty-printed JSON when it encounters an
 object literal instead of "[object Object]".
+- Fix: CommonInfoModel formatter now replaces all double-quotes with
+single-quotes, instead of just the first.
 
 ### v0.3.0
 - Added: Loggly target
