@@ -3,7 +3,7 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
-### Development HEAD
+### v0.3.1
 - Fix: Human formatter now outputs pretty-printed JSON when it encounters an
 object literal instead of "[object Object]".
 - Fix: CommonInfoModel formatter now replaces all double-quotes with
