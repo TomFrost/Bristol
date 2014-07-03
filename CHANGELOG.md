@@ -3,6 +3,10 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### Development HEAD
+- Fix: Human formatter now outputs pretty-printed JSON when it encounters an
+object literal instead of "[object Object]".
+
 ### v0.3.0
 - Added: Loggly target
 - Added: Better documentation regarding targets

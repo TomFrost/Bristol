@@ -13,7 +13,8 @@ describe('Human Formatter', function() {
 		msg = human({}, 'debug', new Date(), [
 			'Hello!',
 			{is_it: 'me', "you're": 'looking for'},
-			{file: __filename, line: 82}
+			{file: __filename, line: 82},
+			{obj: { str: "hello" }}
 		]);
 	});
 	it("should output multiple lines", function() {
@@ -30,5 +31,9 @@ describe('Human Formatter', function() {
 	});
 	it("should output file and line in line 1", function() {
 		msg.should.match(/^[^\n]+human\.js:82/);
-	})
+	});
+	it("should stringify object literals", function() {
+		msg.should.not.match(/\[object Object\]/);
+		msg.should.match(/"str": "hello"/);
+	});
 });
