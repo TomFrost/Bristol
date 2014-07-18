@@ -3,6 +3,9 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### v0.3.2
+- Fix: Don't assume all errors have stack traces
+
 ### v0.3.1
 - Fix: Human formatter now outputs pretty-printed JSON when it encounters an
 object literal instead of "[object Object]".
