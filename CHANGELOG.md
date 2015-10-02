@@ -3,6 +3,10 @@ Insanely configurable logging for Node.js
 
 ##ChangeLog
 
+### v0.3.3
+- Changed: Use istanbul for coverage instead of Grunt/Blanket
+- Fix: Massively speed up origin detection (bartekn PR #12)
+
 ### v0.3.2
 - Fix: Don't assume all errors have stack traces
 

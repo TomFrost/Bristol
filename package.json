@@ -1,6 +1,6 @@
 {
   "name": "bristol",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Insanely configurable logging for Node.js",
   "main": "lib/Bristol.js",
   "scripts": {
