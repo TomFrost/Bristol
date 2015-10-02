@@ -1,8 +1,6 @@
 # Bristol [![Build Status](https://travis-ci.org/TomFrost/Bristol.svg?branch=master)](https://travis-ci.org/TomFrost/Bristol)
 Insanely configurable logging for Node.js
 
-Sponsored by [Leadnomics](http://www.leadnomics.com).
-
 ## Why another logger?
 NPM has no shortage of loggers.  Bristol was created to address a few common
 shortcomings in the current pool of options:
@@ -254,4 +252,6 @@ For simple iterative testing, run just the mocha tests with:
 Bristol is distributed under the MIT license.
 
 ## Credits
-Bristol was created by Tom Frost at Leadnomics in 2014.
+Bristol was created by Tom Shawver in 2014. Development of this library has been
+sponsored by [TechnologyAdvice](http://www.technologyadvice.com) and
+[Leadnomics](http://www.leadnomics.com).
