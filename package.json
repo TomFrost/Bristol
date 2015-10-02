@@ -4,7 +4,10 @@
   "description": "Insanely configurable logging for Node.js",
   "main": "lib/Bristol.js",
   "scripts": {
-    "test": "echo Node `node -v`; echo NPM `npm -v`; echo Mocha `mocha --version`; grunt test"
+    "test": "npm run test-cov && npm run check-cov",
+    "mocha": "mocha --recursive test",
+    "test-cov": "istanbul cover _mocha -- --recursive test",
+    "check-cov": "istanbul check-coverage --statements 90 --functions 90 --branches 70 --lines 90"
   },
   "homepage": "https://github.com/TomFrost/Bristol",
   "repository": {
@@ -29,16 +32,11 @@
   "author": "Tom Frost <tom@frosteddesign.com>",
   "license": "MIT",
   "devDependencies": {
-    "should": "~3.2.0",
-    "mocha": "~1.18.2",
-    "tmp": "0.0.23",
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.8.0",
-    "blanket": "~1.1.5",
-    "grunt-mocha-test": "~0.8.2",
-    "grunt-env": "~0.4.1",
-    "travis-cov": "~0.2.4",
-    "loggly": "^1.0.4"
+    "istanbul": "^0.3.21",
+    "loggly": "^1.0.8",
+    "mocha": "^2.3.3",
+    "should": "^7.1.0",
+    "tmp": "0.0.28"
   },
   "dependencies": {
     "moment": "~2.5.1"
