@@ -242,13 +242,13 @@ that.  Check out some of the built-in targets and formatters for examples.
 They're super easy!
 
 ## Testing
-Testing requires the grunt-cli package to be globally installed.  Do that with:
-
-    npm install -g grunt-cli
-
-And then test with:
+To test with full coverage report and enforcement of coverage percentage minimums:
 
     npm test
+
+For simple iterative testing, run just the mocha tests with: 
+
+    npm run mocha
 
 ## License
 Bristol is distributed under the MIT license.
