@@ -14,7 +14,8 @@ describe('Human Formatter', function() {
 			'Hello!',
 			{is_it: 'me', "you're": 'looking for'},
 			{file: __filename, line: 82},
-			{obj: { str: "hello" }}
+			{obj: { str: "hello" }},
+			[{ val1: "val1", val2: "val2" }]
 		]);
 	});
 	it("should output multiple lines", function() {
@@ -35,5 +36,8 @@ describe('Human Formatter', function() {
 	it("should stringify object literals", function() {
 		msg.should.not.match(/\[object Object\]/);
 		msg.should.match(/"str": "hello"/);
+	});
+	it("should stringify arrays of object literals", function() {
+		msg.should.not.match(/\[object Object\],\[object Object\]/);
 	});
 });
