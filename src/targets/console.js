@@ -1,7 +1,9 @@
 /*
  * Bristol
- * Copyright 2014 Tom Frost
+ * Copyright 2014-2016 Tom Shawver
  */
+
+'use strict'
 
 /**
  * The console target simply console.log()s any message it is passed.
@@ -10,6 +12,6 @@
  * @param {Date} date Unused
  * @param {string} message The message to be logged
  */
-module.exports = function(options, severity, date, message) {
-	console.log(message);
-};
+module.exports = (options, severity, date, message) => {
+  console.log(message)
+}
