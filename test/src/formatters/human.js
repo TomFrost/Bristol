@@ -20,7 +20,7 @@ describe('Human Formatter', () => {
     ])
   })
   it('outputs multiple lines', () => {
-    msg.should.be.of.type('string').and.match(/\n/)
+    msg.should.match(/\n/)
   })
   it('outputs the date', () => {
     msg.should.match(/^\D*\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d\D/)
@@ -36,6 +36,6 @@ describe('Human Formatter', () => {
   })
   it('stringifies object literals', () => {
     msg.should.not.match(/\[object Object\]/)
-    msg.should.match(/'str': 'hello'/)
+    msg.should.match(/"str": "hello"/)
   })
 })

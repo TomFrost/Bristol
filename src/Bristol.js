@@ -28,6 +28,7 @@ const arrayPrepareStackTrace = (err, stack) => { return stack }
  */
 class Bristol extends events.EventEmitter {
   constructor() {
+    super()
     this._severities = {}
     this._targets = []
     this._transforms = []
@@ -240,9 +241,10 @@ class Bristol extends events.EventEmitter {
     const stack = (new Error()).stack
     let origin = null
     for (let i = 1; i < stack.length; i++) {
-      if (stack[i].getThis() !== this) {
+      const file = stack[i].getFileName()
+      if (file !== __filename) {
         origin = {
-          file: stack[i].getFileName(),
+          file,
           line: stack[i].getLineNumber().toString()
         }
         break

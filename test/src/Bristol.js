@@ -36,18 +36,18 @@ describe('Bristol', () => {
   describe('origin', () => {
     it('gets the origin of this call', () => {
       const origin = log._getOrigin()
-      origin.should.have.property('file').of.type('string').and.eql(__filename)
-      origin.should.have.property('line').of.type('string')
+      origin.should.have.property('file').and.eql(__filename)
+      origin.should.have.property('line').and.be.a.string
     })
   })
   describe('targets', () => {
     it('returns a config chain with all properties', () => {
       const conf = b.addTarget(() => {})
-      conf.should.have.property('withFormatter').of.type('function')
-      conf.should.have.property('excluding').of.type('function')
-      conf.should.have.property('onlyIncluding').of.type('function')
-      conf.should.have.property('withLowestSeverity').of.type('function')
-      conf.should.have.property('withHighestSeverity').of.type('function')
+      conf.should.have.property('withFormatter').and.be.a.function
+      conf.should.have.property('excluding').and.be.a.function
+      conf.should.have.property('onlyIncluding').and.be.a.function
+      conf.should.have.property('withLowestSeverity').and.be.a.function
+      conf.should.have.property('withHighestSeverity').and.be.a.function
     })
     it('pushes log messages to the target', () => {
       const res = {}
@@ -125,7 +125,7 @@ describe('Bristol', () => {
       }, { cow: 'moo' })
       b.trace('hello')
       res.should.have.property('msg').and.eql('foo')
-      res.should.have.property('opts').and.containEql({cow: 'moo'})
+      res.should.have.property('opts').and.include({cow: 'moo'})
       res.should.have.property('sev').and.eql('trace')
       res.should.have.property('date').and.be.instanceof(Date)
       res.should.have.property('elems').and.be.an.Array
@@ -160,8 +160,8 @@ describe('Bristol', () => {
       })
       res = JSON.parse(res)
       should.exist(res)
-      res.should.containEql({ foo: 'star' })
-      res.should.containEql({ file: __filename })
+      res.should.include({ foo: 'star' })
+      res.should.include({ file: __filename })
     })
     it('stops running transforms when successful', () => {
       let res = ''
@@ -188,8 +188,8 @@ describe('Bristol', () => {
       })
       res = JSON.parse(res)
       should.exist(res)
-      res.should.containEql({foo: 'star'})
-      res.should.containEql({cow: 'moo'})
+      res.should.include({foo: 'star'})
+      res.should.include({cow: 'moo'})
     })
   })
   describe('globals', () => {

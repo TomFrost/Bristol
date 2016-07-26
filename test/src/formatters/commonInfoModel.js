@@ -21,7 +21,7 @@ describe('CommonInfoModel Formatter', () => {
     should.exist(msg)
   })
   it('starts with the date', () => {
-    msg.should.be.of.type('string').and.match(/^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d/)
+    msg.should.match(/^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d/)
   })
   it('does not contain any newlines', () => {
     msg.should.not.match(/\n/)

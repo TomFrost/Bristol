@@ -98,7 +98,7 @@ exports.freeKey = (obj, key, separator, start) => {
  */
 exports.matchesAllKeys = (haystack, needlesObj) => {
   let foundAll = true
-  forEachObj(needlesObj, (key, val, brake) => {
+  exports.forEachObj(needlesObj, (key, val, brake) => {
     if (!haystack.hasOwnProperty(key)) foundAll = false
     else foundAll = exports.matchesOneValue(haystack[key], val)
     if (!foundAll) brake()
@@ -216,7 +216,7 @@ exports.safeMerge = (destObj, obj, separator, start) => {
  * @returns {*} The destObj, post-merge.
  */
 exports.shallowMerge = (destObj, obj) => {
-  forEachObj(obj, (key, val) => {
+  exports.forEachObj(obj, (key, val) => {
     destObj[key] = val
   })
   return destObj
