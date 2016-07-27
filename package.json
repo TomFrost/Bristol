@@ -5,7 +5,7 @@
   "main": "lib/Bristol.js",
   "scripts": {
     "lint": "eslint src test",
-    "test": "npm run test-cov && npm run check-cov",
+    "test": "npm run lint && npm run test-cov && npm run check-cov",
     "mocha": "mocha",
     "test-cov": "istanbul cover _mocha",
     "check-cov": "istanbul check-coverage --statements 90 --functions 90 --branches 70 --lines 90"

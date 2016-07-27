@@ -23,7 +23,7 @@ const streams = {}
 const getStream = (path) => {
   if (!streams[path] || !streams[path].writable) {
     streams[path] = fs.createWriteStream(path, { flags: 'a' })
-    streams[path].on('error', function(err) {
+    streams[path].on('error', (err) => {
       console.error(`Error writing to ${path}: ${err.message}`)
     })
   }
@@ -38,7 +38,7 @@ const getStream = (path) => {
  * @param {Date} date Unused
  * @param {string} message The message to be logged
  */
-function log(options, severity, date, message) {
+const log = (options, severity, date, message) => {
   const out = getStream(options.file)
   out.write(message + '\n')
 }

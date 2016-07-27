@@ -81,7 +81,7 @@ module.exports = (options, severity, date, elems) => {
   })
   // Construct message
   line += msg
-  logUtil.forEachObj(obj, function(key, val) {
+  logUtil.forEachObj(obj, (key, val) => {
     line += ' ' + key + '=' + getLogVal(val)
   })
   return line

@@ -102,9 +102,7 @@ class Bristol extends events.EventEmitter {
    * @param {string} key The key of the global value to be deleted
    */
   deleteGlobal(key) {
-    if (this._globals.hasOwnProperty(key)) {
-      delete this._globals[key]
-    }
+    delete this._globals[key]
   }
 
   /**
@@ -133,7 +131,7 @@ class Bristol extends events.EventEmitter {
    *      'trace'] if that function was not called.
    * @param {...*} elements One or more elements of any type to be logged
    */
-  log(severity) {
+  log(severity, elements) { // eslint-disable-line no-unused-vars
     if (!this._severities.hasOwnProperty(severity)) {
       throw new Error(`Severity ${severity} does not exist.`)
     }

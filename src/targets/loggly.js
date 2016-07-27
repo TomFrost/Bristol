@@ -43,7 +43,7 @@ const getLogglyClient = (token, subdomain, username, password, tags) => {
  * @param {Date} date The date of the log message
  * @param {string} message The message to be pushed to loggly
  */
-function log(options, severity, date, message) {
+const log = (options, severity, date, message) => {
   const client = getLogglyClient(options.token, options.subdomain, options.username, options.password, options.tags)
   const tags = options.tags || null
   client.log(message, tags, (err) => {

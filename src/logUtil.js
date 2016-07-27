@@ -23,7 +23,7 @@ const util = require('util')
  */
 exports.forEachObj = (obj, cb) => {
   let brakesOn = false
-  const brake = function() { brakesOn = true }
+  const brake = () => { brakesOn = true }
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) cb(key, obj[key], brake)
     if (brakesOn) break
