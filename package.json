@@ -4,9 +4,10 @@
   "description": "Insanely configurable logging for Node.js",
   "main": "lib/Bristol.js",
   "scripts": {
-    "test": "npm run test-cov && npm run check-cov",
-    "mocha": "mocha --recursive test",
-    "test-cov": "istanbul cover _mocha -- --recursive test",
+    "lint": "eslint src test",
+    "test": "npm run lint && npm run test-cov && npm run check-cov",
+    "mocha": "mocha",
+    "test-cov": "istanbul cover _mocha",
     "check-cov": "istanbul check-coverage --statements 90 --functions 90 --branches 70 --lines 90"
   },
   "homepage": "https://github.com/TomFrost/Bristol",
@@ -14,31 +15,24 @@
     "type": "git",
     "url": "git://github.com/TomFrost/Bristol.git"
   },
-  "config": {
-    "blanket": {
-      "pattern": "lib",
-      "data-cover-never": "[node_modules, /test]"
-    },
-    "travis-cov": {
-      "threshold": 80
-    }
-  },
   "keywords": [
     "log",
     "datatype",
     "commoninfomodel",
     "json"
   ],
-  "author": "Tom Frost <tom@frosteddesign.com>",
+  "author": "Tom Shawver <tom@frosteddesign.com>",
   "license": "MIT",
   "devDependencies": {
-    "istanbul": "^0.3.21",
-    "loggly": "^1.0.8",
-    "mocha": "^2.3.3",
-    "should": "^7.1.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "eslint": "^3.1.0",
+    "istanbul": "^0.4.4",
+    "loggly": "^1.1.0",
+    "mocha": "^2.5.3",
     "tmp": "0.0.28"
   },
   "dependencies": {
-    "moment": "~2.5.1"
+    "moment": "^2.14.1"
   }
 }
