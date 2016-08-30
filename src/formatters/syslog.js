@@ -60,7 +60,7 @@ const getLogVal = (val) => {
 module.exports = (options, severity, date, elems) => {
   const sevKey = options.severityKey || DEFAULT_SEVERITY_KEY
   const obj = {}
-  const dateStr = moment(date).format('MMM d HH:mm:ss')
+  const dateStr = moment(date).format('MMM D HH:mm:ss')
   let line = `${dateStr} ${os.hostname()} ${process.title} [${process.pid}]:`
   let msg = ''
   obj[sevKey] = severity
