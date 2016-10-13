@@ -364,3 +364,4 @@ class Bristol extends events.EventEmitter {
 
 module.exports = new Bristol()
 module.exports.Bristol = Bristol
+module.exports._logUtil = logUtil
