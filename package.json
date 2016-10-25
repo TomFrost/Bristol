@@ -2,7 +2,7 @@
   "name": "bristol",
   "version": "0.3.3",
   "description": "Insanely configurable logging for Node.js",
-  "main": "lib/Bristol.js",
+  "main": "src/Bristol.js",
   "scripts": {
     "lint": "eslint src test",
     "test": "npm run lint && npm run test-cov && npm run check-cov",
