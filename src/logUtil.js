@@ -9,6 +9,8 @@ const DEFAULT_SEPARATOR = ''
 
 const util = require('util')
 
+const hasOwnProp = Object.prototype.hasOwnProperty
+
 /**
  * Cycles through the top-level enumerable elements of an object, calling a
  * callback for each key/value pair.  Looping will continue until all elements
@@ -25,7 +27,7 @@ exports.forEachObj = (obj, cb) => {
   let brakesOn = false
   const brake = () => { brakesOn = true }
   for (let key in obj) {
-    if (obj.hasOwnProperty(key)) cb(key, obj[key], brake)
+    if (hasOwnProp.call(obj, key)) cb(key, obj[key], brake)
     if (brakesOn) break
   }
 }
@@ -50,7 +52,7 @@ exports.freeKey = (obj, key, separator, start) => {
   const origKey = key
   let curVal = start || 0
   const sep = typeof separator === 'string' ? separator : DEFAULT_SEPARATOR
-  while (obj.hasOwnProperty(key)) {
+  while (hasOwnProp.call(obj, key)) {
     key = origKey + sep + curVal++
   }
   return key
@@ -99,7 +101,7 @@ exports.freeKey = (obj, key, separator, start) => {
 exports.matchesAllKeys = (haystack, needlesObj) => {
   let foundAll = true
   exports.forEachObj(needlesObj, (key, val, brake) => {
-    if (!haystack.hasOwnProperty(key)) foundAll = false
+    if (!hasOwnProp.call(haystack, key)) foundAll = false
     else foundAll = exports.matchesOneValue(haystack[key], val)
     if (!foundAll) brake()
   })
@@ -124,7 +126,7 @@ exports.matchesAllKeys = (haystack, needlesObj) => {
 exports.matchesOneKey = (haystack, needlesObj) => {
   let found = false
   exports.forEachObj(needlesObj, (key, val, brake) => {
-    if (haystack.hasOwnProperty(key)) {
+    if (hasOwnProp.call(haystack, key)) {
       found = exports.matchesOneValue(haystack[key], val)
       if (found) brake()
     }
