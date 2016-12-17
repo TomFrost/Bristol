@@ -10,7 +10,7 @@ const DEFAULT_DATE_KEY = 'date'
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 const DEFAULT_SEVERITY_KEY = 'severity'
 
-const logUtil = require('../logUtil')
+const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 
 const sanitize = (str) => {

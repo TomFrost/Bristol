@@ -6,7 +6,7 @@
 'use strict'
 
 const DEFAULT_SEVERITY_LEVELS = ['error', 'warn', 'info', 'debug', 'trace']
-const DEFAULT_FORMATTER = require('./formatters/json')
+const DEFAULT_FORMATTER = 'json'
 
 const logUtil = require('./logUtil')
 const events = require('events')
@@ -66,12 +66,12 @@ class Bristol extends events.EventEmitter {
     }
     const targetObj = {
       log: target.bind(target, options || {}),
-      formatter: DEFAULT_FORMATTER.bind(this, [{}]),
       blacklist: {},
       whitelist: {},
       leastVerbose: 0,
       mostVerbose: Infinity
     }
+    Bristol._setFormatter(targetObj, DEFAULT_FORMATTER, {})
     this._targets.push(targetObj)
     return this._getTargetConfigChain(targetObj)
   }
@@ -275,10 +275,7 @@ class Bristol extends events.EventEmitter {
   _getTargetConfigChain(target) {
     const chain = {}
     chain.withFormatter = (formatter, options) => {
-      if (typeof formatter === 'string') {
-        formatter = require('./formatters/' + formatter)
-      }
-      target.formatter = formatter.bind(formatter, options || {})
+      Bristol._setFormatter(target, formatter, options)
       return chain
     }
     chain.excluding = (blacklist) => {
@@ -360,8 +357,29 @@ class Bristol extends events.EventEmitter {
     }
     return result || elem
   }
+
+  /**
+   * Loads a formatter function onto a specified target configuration
+   * @param {{
+   *   log,
+   *   formatter,
+   *   blacklist,
+   *   whitelist,
+   *   leastVerbose,
+   *   mostVerbose
+   * }} target A target object to which the formatter should be saved
+   * @param {function|string} formatter A formatter function or name
+   * @param {Object} [options={}] An options argument to configure the formatter
+   * @private
+   */
+  static _setFormatter(target, formatter, options) {
+    if (typeof formatter === 'string') {
+      formatter = require('./formatters/' + formatter)
+    }
+    target.formatter = formatter.bind(formatter, options || {})
+  }
 }
 
 module.exports = new Bristol()
 module.exports.Bristol = Bristol
-module.exports._logUtil = logUtil
+module.exports.Bristol.logUtil = logUtil

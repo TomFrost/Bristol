@@ -7,7 +7,7 @@
 
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
-const logUtil = require('../logUtil')
+const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 
 const sanitize = (str) => {
