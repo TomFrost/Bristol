@@ -237,7 +237,13 @@ class Bristol extends events.EventEmitter {
   _getOrigin() {
     Error.prepareStackTrace = arrayPrepareStackTrace
     const stack = (new Error()).stack
-    const lastIndex = stack.map(s => s.getFileName()).lastIndexOf(__filename)
+    let lastIndex = 0
+    for (let i = stack.length - 1; i >= 0; i--) {
+      if (stack[i].getFileName() === __filename) {
+        lastIndex = i
+        break
+      }
+    }
     const line = stack[lastIndex + 1]
     let origin = {
       file: line.getFileName(),
