@@ -249,10 +249,9 @@ class Bristol extends events.EventEmitter {
    * @private
    */
   _processStack(stack, bristolFileName) {
-    let lastIndex = 0
-    for (let i = stack.length - 1; i >= 0; i--) {
-      if (stack[i].getFileName() === bristolFileName) {
-        lastIndex = i
+    let lastIndex = stack.length - 1
+    for (; lastIndex >= 0; lastIndex--) {
+      if (stack[lastIndex].getFileName() === bristolFileName) {
         break
       }
     }
