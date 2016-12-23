@@ -237,20 +237,33 @@ class Bristol extends events.EventEmitter {
   _getOrigin() {
     Error.prepareStackTrace = arrayPrepareStackTrace
     const stack = (new Error()).stack
+    Error.prepareStackTrace = originalPrepareStackTrace
+    return this._processStack(stack, __filename)
+  }
+
+  /**
+   * Processes the stack trace of the Bristol log call, excluding wrapping functions.
+   * @returns {null|{file, line}} An object containing the file path and line
+   *   number of the originating Bristol call, or null if this information
+   *   cannot be found.
+   * @private
+   */
+  _processStack(stack, bristolFileName) {
     let lastIndex = 0
     for (let i = stack.length - 1; i >= 0; i--) {
-      if (stack[i].getFileName() === __filename) {
+      if (stack[i].getFileName() === bristolFileName) {
         lastIndex = i
         break
       }
     }
     const line = stack[lastIndex + 1]
-    let origin = {
-      file: line.getFileName(),
-      line: line.getLineNumber().toString()
+    if (line) {
+      return {
+        file: line.getFileName(),
+        line: line.getLineNumber().toString()
+      }
     }
-    Error.prepareStackTrace = originalPrepareStackTrace
-    return origin
+    return null
   }
 
   /**
