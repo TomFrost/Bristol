@@ -40,6 +40,50 @@ describe('Bristol', () => {
       origin.should.have.property('line').and.be.a.string
     })
   })
+  describe('processStack', () => {
+    class MockStackLine {
+      constructor(file, line) {
+        this.file = file
+        this.line = line
+      }
+      getFileName() {
+        return this.file
+      }
+      getLineNumber() {
+        return this.line
+      }
+    }
+    it('gets the correct line for a normal call', () => {
+      const stack = [
+        new MockStackLine('Bristol.js', '202'),
+        new MockStackLine('caller.js', '6')
+      ]
+      const origin = log._processStack(stack, 'Bristol.js')
+      origin.should.have.property('file').and.eql('caller.js')
+      origin.should.have.property('line').and.be.a.string
+    })
+    it('gets the correct line for a wrapped call', () => {
+      const stack = [
+        new MockStackLine('wrapper.js', '2'),
+        new MockStackLine('Bristol.js', '202'),
+        new MockStackLine('caller.js', '6')
+      ]
+      const origin = log._processStack(stack, 'Bristol.js')
+      origin.should.have.property('file').and.eql('caller.js')
+      origin.should.have.property('line').and.be.a.string
+    })
+    it('gets the correct line for a wrapped call with repeated intermediates', () => {
+      const stack = [
+        new MockStackLine('wrapper.js', '2'),
+        new MockStackLine('Bristol.js', '202'),
+        new MockStackLine('Bristol.js', '202'),
+        new MockStackLine('caller.js', '6')
+      ]
+      const origin = log._processStack(stack, 'Bristol.js')
+      origin.should.have.property('file').and.eql('caller.js')
+      origin.should.have.property('line').and.be.a.string
+    })
+  })
   describe('targets', () => {
     it('returns a config chain with all properties', () => {
       const conf = b.addTarget(() => {})
