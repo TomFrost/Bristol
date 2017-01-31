@@ -30,7 +30,7 @@ describe('Slack Target', () => {
         icon_emoji: undefined,
         username: undefined,
         channel: undefined,
-        text: '```test```'
+        text: 'test'
       }
     }))
   })
@@ -48,12 +48,12 @@ describe('Slack Target', () => {
         icon_emoji: ':boom:',
         username: 'bristol',
         channel: 'test-channel',
-        text: '```test```'
+        text: 'test'
       }
     }))
   })
   it('sends formatted message (when human formatter used) to slack webhook', () => {
-    slackTarget({ webhook: 'foo' }, 'bar', new Date(), 'test\ndata')
+    slackTarget({ webhook: 'foo', format: true, wrapBlock: true }, 'bar', new Date(), 'test\ndata')
     requestStub.should.be.calledWith(sinon.match({
       uri: 'foo',
       json: true,
