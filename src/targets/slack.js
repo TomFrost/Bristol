@@ -8,12 +8,12 @@
 const request = require('request-promise')
 
 /**
- * The console target simply console.log()s any message it is passed.
+ * The Slack target posts to a Slack channel via POST to a webhook.
  * @param {Object} options Map of options for Slack
  * @param {string} options.webhook Slack webhook URL
  * @param {string} options.icon_emoji Slack emoji code for message icon, ex: :boom:
  * @param {string} options.username Username to display
- * @pamam {string} options.channel Specify channel to post to
+ * @param {string} options.channel The channel to send to in Slack
  * @param {string} severity Unused
  * @param {Date} date Unused
  * @param {string} message The message to be sent to Slack
@@ -45,8 +45,3 @@ module.exports = (options, severity, date, message) => {
     console.error(`Error publishing log message to slack: ${err} - Message was: ${message}`)
   })
 }
-
-
-// log.addTarget('slack', { webhook: 'https://whatever' })
-//   .withFormatter('human')
-//   .withLowestSeverity('error')
