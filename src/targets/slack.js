@@ -22,10 +22,10 @@ const request = require('request-promise')
  */
 module.exports = (options, severity, date, message) => {
   let text
-  const nlIndex = message.indexOf('\n')
+  const nlIndex = options.format ? message.indexOf('\n') : 0
   const formatBlock = (block) => options.wrapBlock ? `\`\`\`${block}\`\`\`` : block
   // Perform formatting
-  if (nlIndex > 0 && options.format) {
+  if (nlIndex > 0) {
     // Message contains \n assume human formatter, split and format
     const str = message.substr(0, nlIndex)
     const block = message.slice(nlIndex + 1)
