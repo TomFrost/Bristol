@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint src test",
     "test": "npm run lint && npm run test-cov && npm run check-cov",
+    "bench": "node -r ./test/setup.js ./test/bench/formatters/json.js",
     "mocha": "mocha",
     "test-cov": "istanbul cover _mocha",
     "check-cov": "istanbul check-coverage --statements 90 --functions 90 --branches 70 --lines 90"
@@ -24,6 +25,7 @@
   "author": "Tom Shawver <tom@frosteddesign.com>",
   "license": "MIT",
   "devDependencies": {
+    "benchmark": "^2.1.3",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "eslint": "^3.12.2",
