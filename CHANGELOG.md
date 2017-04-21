@@ -2,8 +2,12 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Development]
+See the [Github Issues](https://github.com/TomFrost/Bristol/issues) to see what's on the way.
 ### Changed
 - Bristol has been updated to ES6 and is compatible with Node.js 4 LTE and up
+
+### Fixed
+- Bristol now grabs the current Error.prepareStackTrace immediately before changing it, instead of when the source is loaded. This respects the overrides user may be making on their own. (RooSoft #40)
 
 ## [v0.3.3]
 ### Changed
