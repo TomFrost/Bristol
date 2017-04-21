@@ -11,7 +11,6 @@ const DEFAULT_FORMATTER = 'json'
 const logUtil = require('./logUtil')
 const events = require('events')
 
-const originalPrepareStackTrace = Error.prepareStackTrace
 const arrayPrepareStackTrace = (err, stack) => { return stack }
 
 /**
@@ -235,9 +234,10 @@ class Bristol extends events.EventEmitter {
    * @private
    */
   _getOrigin() {
+    const latestPrepareStackTrace = Error.prepareStackTrace
     Error.prepareStackTrace = arrayPrepareStackTrace
     const stack = (new Error()).stack
-    Error.prepareStackTrace = originalPrepareStackTrace
+    Error.prepareStackTrace = latestPrepareStackTrace
     return this._processStack(stack, __filename)
   }
 
