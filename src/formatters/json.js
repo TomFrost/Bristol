@@ -10,6 +10,7 @@ const DEFAULT_DATE_KEY = 'date'
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 const DEFAULT_SEVERITY_KEY = 'severity'
 
+const stringify = require('json-stringify-safe')
 const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 
@@ -66,5 +67,5 @@ module.exports = (options, severity, date, elems) => {
   } else {
     delete obj[msgKey]
   }
-  return JSON.stringify(obj)
+  return stringify(obj)
 }
