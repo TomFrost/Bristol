@@ -175,6 +175,29 @@ describe('Bristol', () => {
       res.should.have.property('elems').and.be.an.Array
       res.elems.length.should.be.above(1)
     })
+    it('passes dates to formatter', () => {
+      const res = {}
+      const dateArg = new Date(99999)
+      b.addTarget((opts, sev, date, msg) => {
+        res.msg = msg
+      }).withFormatter((opts, sev, date, elems) => {
+        res.opts = opts
+        res.sev = sev
+        res.date = date
+        res.elems = elems
+        return 'foo'
+      }, { cow: 'moo' })
+      b.trace('hello', dateArg, 'world')
+      res.should.have.property('msg').and.eql('foo')
+      res.should.have.property('opts').and.include({cow: 'moo'})
+      res.should.have.property('sev').and.eql('trace')
+      res.should.have.property('date').and.be.instanceof(Date)
+      res.should.have.property('elems').and.be.an.Array
+      res.elems.length.should.be.above(1)
+      res.elems[0].should.eql('hello')
+      res.elems[1].should.eql(dateArg)
+      res.elems[2].should.eql('world')
+    })
     it('logs to multiple targets', () => {
       let one = 0
       let two = 0

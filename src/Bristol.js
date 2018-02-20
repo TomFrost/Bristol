@@ -142,7 +142,7 @@ class Bristol extends events.EventEmitter {
     args[0] = logUtil.safeMerge(this._getOrigin(), this._getGlobals())
     for (let i = 0; i < args.length; i++) {
       const arg = this._transform(args[i])
-      if (typeof arg === 'object' && !(arg instanceof Error)) {
+      if (typeof arg === 'object' && !(arg instanceof Error) && !(arg instanceof Date)) {
         logUtil.safeMerge(objArgs, arg)
       } else {
         logElems.push(arg)
