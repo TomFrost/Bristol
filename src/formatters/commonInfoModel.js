@@ -9,6 +9,7 @@ const DEFAULT_MESSAGE_KEY = 'message'
 const DEFAULT_SEVERITY_KEY = 'severity'
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
+const stringify = require('json-stringify-safe')
 const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 
@@ -25,7 +26,7 @@ const getLoggable = (val) => {
   if (str) return sanitize(str)
   if (val instanceof Error) return '<Err: ' + sanitize(val.message) + '>'
   if (val instanceof Date) return moment(val).format(DEFAULT_DATE_FORMAT)
-  return sanitize(JSON.stringify(val))
+  return sanitize(stringify(val))
 }
 
 /**

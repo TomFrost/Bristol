@@ -7,6 +7,7 @@
 
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
+const stringify = require('json-stringify-safe')
 const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 
@@ -75,7 +76,7 @@ module.exports = (options, severity, date, elems) => {
       strVal = val.toString()
       if (strVal === '[object Object]') {
         // Pretty-print objects with JSON
-        strVal = ('\n' + JSON.stringify(val, null, '    ')).replace(/\n/g, '\n\t    ')
+        strVal = ('\n' + stringify(val, null, '    ')).replace(/\n/g, '\n\t    ')
       }
     } catch (e) {
       // Swallow

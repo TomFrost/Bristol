@@ -8,6 +8,7 @@
 const DEFAULT_SEVERITY_KEY = 'severity'
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
+const stringify = require('json-stringify-safe')
 const logUtil = require('../Bristol').Bristol.logUtil
 const moment = require('moment')
 const os = require('os')
@@ -27,7 +28,7 @@ const getLogVal = (val) => {
   } else if (val instanceof Date) {
     logVal = moment(val).format(DEFAULT_DATE_FORMAT)
   } else {
-    logVal = sanitize(JSON.stringify(val))
+    logVal = sanitize(stringify(val))
   }
   if (logVal.indexOf(' ') >= 0) {
     logVal = '"' + logVal.replace('"', '\\"') + '"'
