@@ -3,11 +3,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Development]
 See the [Github Issues](https://github.com/TomFrost/Bristol/issues) to see what's on the way.
+
+## [v0.4.0]
 ### Changed
 - Bristol has been updated to ES6 and is compatible with Node.js 4 LTE and up
+- All dependencies have been updated to latest
+- Officially tested on latest versions of Node (MarkHerhold #44)
 
 ### Fixed
 - Bristol now grabs the current Error.prepareStackTrace immediately before changing it, instead of when the source is loaded. This respects the overrides user may be making on their own. (RooSoft #40)
+- Bristol no longer fails on logging circular references (yknx4 #41)
+- Silent failed Chai assertions are corrected
+- Bristol no longer attempts to merge Date objects (jeffijoe #47)
+- Dropped unnecessary Request dependency (MarkHerhold #43)
 
 ## [v0.3.3]
 ### Changed
@@ -57,7 +65,8 @@ See the [Github Issues](https://github.com/TomFrost/Bristol/issues) to see what'
 ## v0.1.0
 - **Initial Release**
 
-[Development]: https://github.com/TomFrost/Bristol/compare/0.3.3...HEAD
+[Development]: https://github.com/TomFrost/Bristol/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/TomFrost/Bristol/compare/0.3.3...v0.4.0
 [v0.3.3]: https://github.com/TomFrost/Bristol/compare/0.3.2...0.3.3
 [v0.3.2]: https://github.com/TomFrost/Bristol/compare/0.3.1...0.3.2
 [v0.3.1]: https://github.com/TomFrost/Bristol/compare/0.3.0...0.3.1
