@@ -18,7 +18,7 @@ describe('Bristol', () => {
     it('creates functions for default severities', () => {
       const sevs = ['error', 'warn', 'info', 'debug', 'trace']
       sevs.forEach((s) => {
-        b.should.have.property(s).and.is.a.function
+        b.should.have.property(s).and.is.a('function')
       })
     })
     it('replaces default functions with new ones', () => {
@@ -26,7 +26,7 @@ describe('Bristol', () => {
       const newSevs = ['omg', 'uhoh', 'k', 'wtf', 'yo']
       b.setSeverities(newSevs)
       newSevs.forEach((s) => {
-        b.should.have.property(s).and.is.a.function
+        b.should.have.property(s).and.is.a('function')
       })
       oldSevs.forEach((s) => {
         b.should.not.have.property(s)
@@ -87,11 +87,11 @@ describe('Bristol', () => {
   describe('targets', () => {
     it('returns a config chain with all properties', () => {
       const conf = b.addTarget(() => {})
-      conf.should.have.property('withFormatter').and.be.a.function
-      conf.should.have.property('excluding').and.be.a.function
-      conf.should.have.property('onlyIncluding').and.be.a.function
-      conf.should.have.property('withLowestSeverity').and.be.a.function
-      conf.should.have.property('withHighestSeverity').and.be.a.function
+      conf.should.have.property('withFormatter').and.be.a('function')
+      conf.should.have.property('excluding').and.be.a('function')
+      conf.should.have.property('onlyIncluding').and.be.a('function')
+      conf.should.have.property('withLowestSeverity').and.be.a('function')
+      conf.should.have.property('withHighestSeverity').and.be.a('function')
     })
     it('pushes log messages to the target', () => {
       const res = {}
@@ -172,7 +172,7 @@ describe('Bristol', () => {
       res.should.have.property('opts').and.include({cow: 'moo'})
       res.should.have.property('sev').and.eql('trace')
       res.should.have.property('date').and.be.instanceof(Date)
-      res.should.have.property('elems').and.be.an.Array
+      res.should.have.property('elems').and.be.an('Array')
       res.elems.length.should.be.above(1)
     })
     it('passes dates to formatter', () => {
@@ -185,7 +185,7 @@ describe('Bristol', () => {
         return 'foo'
       }, { cow: 'moo' })
       b.trace('hello', dateArg, 'world')
-      res.should.have.property('elems').and.be.an.Array
+      res.should.have.property('elems').and.be.an('Array')
       res.elems.length.should.be.above(1)
       res.elems[0].should.eql('hello')
       res.elems[1].should.eql(dateArg)
