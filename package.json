@@ -24,18 +24,18 @@
   "author": "Tom Shawver <tom@frosteddesign.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "eslint": "^3.12.2",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.19.0",
     "istanbul": "^0.4.5",
     "loggly": "^1.1.1",
-    "mocha": "^3.2.0",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0",
+    "mocha": "^5.0.4",
+    "sinon": "^4.4.6",
+    "sinon-chai": "^3.0.0",
     "tmp": "0.0.31"
   },
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
-    "moment": "^2.17.1"
+    "moment": "^2.21.0"
   }
 }
