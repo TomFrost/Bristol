@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
-    "moment": "^2.21.0"
+    "moment": "^2.22.1"
   }
 }
