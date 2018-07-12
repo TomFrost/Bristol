@@ -148,6 +148,9 @@ log.addTransform(function(elem) {
 // properties to the resulting log message, rather than all of them.
 log.info("New connection", incomingConn, {connections: server.getUserCount()});
 ```
+With every log call, any transform functions are first called with an object
+parameter containing the file path of the calling script (`.file`) and the line
+number where the call originated (`.line`).
 
 ### Setting global log values
 Do you need certain pieces of information logged with every message?
