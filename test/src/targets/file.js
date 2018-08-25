@@ -1,9 +1,9 @@
 /*
  * Bristol
- * Copyright 2014-2016 Tom Shawver
+ * Copyright 2014-2018 Tom Shawver
  */
 
-/* global describe,it,beforeEach,afterEach,before,after */
+/* global describe,it,before,should */
 'use strict'
 
 const file = require('src/targets/file')

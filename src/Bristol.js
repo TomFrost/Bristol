@@ -1,6 +1,6 @@
 /*
  * Bristol
- * Copyright 2014-2016 Tom Shawver
+ * Copyright 2014-2018 Tom Shawver
  */
 
 'use strict'
@@ -11,7 +11,7 @@ const DEFAULT_FORMATTER = 'json'
 const logUtil = require('./logUtil')
 const events = require('events')
 
-const arrayPrepareStackTrace = (err, stack) => { return stack }
+const arrayPrepareStackTrace = (ignore, stack) => { return stack }
 
 /**
  * The Bristol class defines a logger capable of simultaneous logging to
@@ -26,7 +26,7 @@ const arrayPrepareStackTrace = (err, stack) => { return stack }
  * in any other file.
  */
 class Bristol extends events.EventEmitter {
-  constructor() {
+  constructor () {
     super()
     this._severities = {}
     this._targets = []
@@ -59,7 +59,7 @@ class Bristol extends events.EventEmitter {
    *   withHighestSeverity
    * }} A config chain object
    */
-  addTarget(target, options) {
+  addTarget (target, options) {
     if (typeof target === 'string') {
       target = require('./targets/' + target)
     }
@@ -91,7 +91,7 @@ class Bristol extends events.EventEmitter {
    * @param {function} transform A transform function, accepting an element
    *   that was passed to the logger and returning what should be logged.
    */
-  addTransform(transform) {
+  addTransform (transform) {
     this._transforms.push(transform)
   }
 
@@ -100,7 +100,7 @@ class Bristol extends events.EventEmitter {
    * this is called will no longer include the removed pair.
    * @param {string} key The key of the global value to be deleted
    */
-  deleteGlobal(key) {
+  deleteGlobal (key) {
     delete this._globals[key]
   }
 
@@ -130,7 +130,7 @@ class Bristol extends events.EventEmitter {
    *      'trace'] if that function was not called.
    * @param {...*} elements One or more elements of any type to be logged
    */
-  log(severity, elements) { // eslint-disable-line no-unused-vars
+  log (severity, elements) { // eslint-disable-line no-unused-vars
     if (!this._severities.hasOwnProperty(severity)) {
       throw new Error(`Severity ${severity} does not exist.`)
     }
@@ -169,7 +169,7 @@ class Bristol extends events.EventEmitter {
    * @param {string} key The key number under which to log the value
    * @param {*} val The value to be logged
    */
-  setGlobal(key, val) {
+  setGlobal (key, val) {
     this._globals[key] = val
   }
 
@@ -184,7 +184,7 @@ class Bristol extends events.EventEmitter {
    * @param {Array.<string>} levels The severity levels to use in this Bristol
    *      instance
    */
-  setSeverities(levels) {
+  setSeverities (levels) {
     const oldLevels = this._severities
     const self = this
     // Delete the existing error level functions
@@ -195,7 +195,7 @@ class Bristol extends events.EventEmitter {
     levels.forEach((level, idx) => {
       this._severities[level] = idx
       if (!this[level]) {
-        this[level] = function() {
+        this[level] = function () {
           const args = Array.prototype.slice.call(arguments)
           args.unshift(level)
           self.log.apply(self, args)
@@ -214,7 +214,7 @@ class Bristol extends events.EventEmitter {
    *   function values replaced with their result.
    * @private
    */
-  _getGlobals() {
+  _getGlobals () {
     const globals = {}
     logUtil.forEachObj(this._globals, (key, val) => {
       if (typeof val === 'function') globals[key] = val()
@@ -233,7 +233,7 @@ class Bristol extends events.EventEmitter {
    *   cannot be found.
    * @private
    */
-  _getOrigin() {
+  _getOrigin () {
     const latestPrepareStackTrace = Error.prepareStackTrace
     Error.prepareStackTrace = arrayPrepareStackTrace
     const stack = (new Error()).stack
@@ -248,7 +248,7 @@ class Bristol extends events.EventEmitter {
    *   cannot be found.
    * @private
    */
-  _processStack(stack, bristolFileName) {
+  _processStack (stack, bristolFileName) {
     let lastIndex = stack.length - 1
     for (; lastIndex >= 0; lastIndex--) {
       if (stack[lastIndex].getFileName() === bristolFileName) {
@@ -285,7 +285,7 @@ class Bristol extends events.EventEmitter {
    * }} A config chain object
    * @private
    */
-  _getTargetConfigChain(target) {
+  _getTargetConfigChain (target) {
     const chain = {}
     chain.withFormatter = (formatter, options) => {
       Bristol._setFormatter(target, formatter, options)
@@ -342,7 +342,7 @@ class Bristol extends events.EventEmitter {
    * @param {Array} elems An array of elements to be logged, of any type.
    * @private
    */
-  _logToTarget(target, severity, date, elems) {
+  _logToTarget (target, severity, date, elems) {
     const verbosity = this._severities[severity]
     const testObj = elems[elems.length - 1]
     if (verbosity >= target.leastVerbose &&
@@ -362,7 +362,7 @@ class Bristol extends events.EventEmitter {
    *   transform modified it.
    * @private
    */
-  _transform(elem) {
+  _transform (elem) {
     let result
     for (let i = 0; i < this._transforms.length; i++) {
       result = this._transforms[i](elem)
@@ -385,7 +385,7 @@ class Bristol extends events.EventEmitter {
    * @param {Object} [options={}] An options argument to configure the formatter
    * @private
    */
-  static _setFormatter(target, formatter, options) {
+  static _setFormatter (target, formatter, options) {
     if (typeof formatter === 'string') {
       formatter = require('./formatters/' + formatter)
     }

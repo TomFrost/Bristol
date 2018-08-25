@@ -1,9 +1,9 @@
 /*
  * Bristol
- * Copyright 2014-2016 Tom Shawver
+ * Copyright 2014-2018 Tom Shawver
  */
 
-/* global describe,it,beforeEach,afterEach,before,after */
+/* global describe,it,after */
 'use strict'
 
 const consoleTarget = require('src/targets/console')

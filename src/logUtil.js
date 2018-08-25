@@ -1,13 +1,11 @@
 /*
  * Bristol
- * Copyright 2014-2016 Tom Shawver
+ * Copyright 2014-2018 Tom Shawver
  */
 
 'use strict'
 
 const DEFAULT_SEPARATOR = ''
-
-const util = require('util')
 
 const hasOwnProp = Object.prototype.hasOwnProperty
 
@@ -147,11 +145,11 @@ exports.matchesOneKey = (haystack, needlesObj) => {
  */
 exports.matchesOneValue = (haystack, needles) => {
   let found = false
-  if (!util.isArray(needles)) needles = [needles]
+  if (!Array.isArray(needles)) needles = [needles]
   for (let i = 0; i < needles.length; i++) {
     if (typeof needles[i] === 'function') {
       found = needles[i](haystack)
-    } else if (util.isRegExp(needles[i])) {
+    } else if (needles[i] instanceof RegExp) {
       found = !!haystack.match(needles[i])
     } else {
       found = haystack === needles[i]
@@ -173,14 +171,14 @@ exports.nonObjToString = (elem) => {
   if (elem === null) return 'null'
   if (typeof elem !== 'object') {
     switch (typeof elem) {
-    case 'undefined': return 'undefined'
-    case 'boolean': return elem ? 'true' : 'false'
-    default:
-      try {
-        return elem.toString()
-      } catch (e) {
+      case 'undefined': return 'undefined'
+      case 'boolean': return elem ? 'true' : 'false'
+      default:
+        try {
+          return elem.toString()
+        } catch (e) {
         // Swallow
-      }
+        }
     }
   }
   return null

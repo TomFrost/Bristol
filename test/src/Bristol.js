@@ -1,9 +1,9 @@
 /*
  * Bristol
- * Copyright 2014-2016 Tom Shawver
+ * Copyright 2014-2018 Tom Shawver
  */
 
-/* global describe,it,beforeEach,afterEach,before,after */
+/* global describe,it,beforeEach,should */
 'use strict'
 
 const log = require('src/Bristol')
@@ -37,19 +37,20 @@ describe('Bristol', () => {
     it('gets the origin of this call', () => {
       const origin = log._getOrigin()
       origin.should.have.property('file').and.eql(__filename)
-      origin.should.have.property('line').and.be.a.string
+      origin.should.have.property('line')
+      ;(typeof origin.line).should.equal('string')
     })
   })
   describe('processStack', () => {
     class MockStackLine {
-      constructor(file, line) {
+      constructor (file, line) {
         this.file = file
         this.line = line
       }
-      getFileName() {
+      getFileName () {
         return this.file
       }
-      getLineNumber() {
+      getLineNumber () {
         return this.line
       }
     }
@@ -60,7 +61,8 @@ describe('Bristol', () => {
       ]
       const origin = log._processStack(stack, 'Bristol.js')
       origin.should.have.property('file').and.eql('caller.js')
-      origin.should.have.property('line').and.be.a.string
+      origin.should.have.property('line')
+      ;(typeof origin.line).should.equal('string')
     })
     it('gets the correct line for a wrapped call', () => {
       const stack = [
@@ -70,7 +72,8 @@ describe('Bristol', () => {
       ]
       const origin = log._processStack(stack, 'Bristol.js')
       origin.should.have.property('file').and.eql('caller.js')
-      origin.should.have.property('line').and.be.a.string
+      origin.should.have.property('line')
+      ;(typeof origin.line).should.equal('string')
     })
     it('gets the correct line for a wrapped call with repeated intermediates', () => {
       const stack = [
@@ -81,7 +84,8 @@ describe('Bristol', () => {
       ]
       const origin = log._processStack(stack, 'Bristol.js')
       origin.should.have.property('file').and.eql('caller.js')
-      origin.should.have.property('line').and.be.a.string
+      origin.should.have.property('line')
+      ;(typeof origin.line).should.equal('string')
     })
   })
   describe('targets', () => {

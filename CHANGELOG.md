@@ -2,7 +2,10 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Development]
-See the [Github Issues](https://github.com/TomFrost/Bristol/issues) to see what's on the way.
+### Changed
+- Removed the Loggly target. It had vulnerable dependencies and was not being updated.
+- Updated multiple dependencies and eliminated more vulnerabilities
+- Moved to Standard.js for linting
 
 ## [v0.4.0]
 ### Changed
