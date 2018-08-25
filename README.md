@@ -87,21 +87,6 @@ Streams output to a file using a logrotate-friendly WriteStream.  Required
 options:
 - **file** *string:* The full path to the file to be created or opened
 
-#### loggly
-Pushes new messages directly to the Loggly API.  Note that, to keep Bristol
-light, the Loggly API library is not included as a core dependency.  You must
-run `npm install loggly --save` in your project root in order to use this
-target.
-
-Required options:
-- **token** *string:* Your loggly token
-- **subdomain** *string:* Your registered Loggly subdomain
-- **username** *string:* Loggly username
-- **password** *string:* Loggly password
-
-Optional:
-- **tags** *Array|string:* Global Loggly tags
-
 ### Severity levels
 By default, Bristol provides *error*, *warn*, *info*, *debug*, and *trace*
 severity levels.  These can be called as function names from the log object,
@@ -247,7 +232,7 @@ To test with full coverage report and enforcement of coverage percentage minimum
 
     npm test
 
-For simple iterative testing, run just the mocha tests with: 
+For simple iterative testing, run just the mocha tests with:
 
     npm run mocha
 
